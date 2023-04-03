@@ -172,7 +172,6 @@ file 'assessment.json' into assessment_out
 when:
 file_validated == 0
 
-// TODO fix this command
 """
 conda run -n sqanti_env python /app/sqanti3_lrgasp.challenge1.py $input_dir_metrics/$input_gtf $input_dir_metrics/$transcriptome_reference $input_dir_metrics/$genome_reference --gtf --experiment_json $input_dir_metrics/$experiment_json --entry_json $input_dir_metrics/$entry_json --cage_peak $input_dir_metrics/$input_cage_peak --polyA_motif_list $input_dir_metrics/$input_polyA \
 -c $input_dir_metrics/$coverage_file -d "$input_dir_metrics" -o results --assesment-output "assessment.json"

@@ -44,7 +44,7 @@
     },
     {
       "name": "nextflow_repo_tag",
-      "value": "25f5abc838725852b65f1b5d37907465503a0c07"
+      "value": "51bc23930534221b1397579afa70780db3d99c2d"
     },
     {
       "name": "community_id",
@@ -107,7 +107,7 @@
         "compressed": "null",
         "meta_data": {
           "description": "Benchmarking data model minimal participant dataset",
-          "tool": "TCGA_CD",
+          "tool": "klaak",
           "visible": true
         }
       }

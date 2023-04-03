@@ -28,7 +28,7 @@
     "compressed": 0,
     "taxon_id": -1,
     "_id": "OpEBUSER5cc02033c429d_5cfa242b7b85c0.96805689",
-    "file_path": "tests/LRGASP/lrgasp_dataset/"
+    "file_path": "tests/LRGASP/input_dataset"
   },
   {
     "user_id": "public",
