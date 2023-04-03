@@ -153,29 +153,29 @@ publishDir "${assessment_file.parent}", saveAs: { filename -> assessment_file.na
 input:
 val file_validated from EXIT_STAT
 path input_dir_metrics
-file input_gtf
-file input_cage_peak
-file input_polyA
-file entry_json
-file experiment_json
-file genome_reference
-file transcriptome_reference
-file coverage_file
-file input_read_model_map
+val input_gtf
+val input_cage_peak
+val input_polyA
+val entry_json
+val experiment_json
+val genome_reference
+val transcriptome_reference
+val coverage_file
+val input_read_model_map
 path gold_standards_dir
 val tool_name
 val community_id
 
 output:
-file '/app/output/assessment/assessment.json' into assessment_out
+file 'assessment.json' into assessment_out
 
 when:
 file_validated == 0
 
 // TODO fix this command
 """
-conda run -n sqanti_env python /app/sqanti3_lrgasp.challenge1.py $input_dir/$input_gtf $input_dir/$transcriptome_reference $input_dir/$genome_reference --gtf --experiment_json $input_dir/$experiment_json --entry_json $input_dir/$entry_json --cage_peak $input_dir/$input_cage_peak --polyA_motif_list $input_dir/$input_polyA \
--c $input_dir/$coverage_file -d $other_dir/results/ -o assessment
+conda run -n sqanti_env python /app/sqanti3_lrgasp.challenge1.py $input_dir_metrics/$input_gtf $input_dir_metrics/$transcriptome_reference $input_dir_metrics/$genome_reference --gtf --experiment_json $input_dir_metrics/$experiment_json --entry_json $input_dir_metrics/$entry_json --cage_peak $input_dir_metrics/$input_cage_peak --polyA_motif_list $input_dir_metrics/$input_polyA \
+-c $input_dir_metrics/$coverage_file -d $other_dir/results/ -o assessment --assesment-output "assessment.json"
 """
 
 }
