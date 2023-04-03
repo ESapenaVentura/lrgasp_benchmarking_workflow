@@ -77,15 +77,15 @@ if (params.help) {
 // input files
 
 input_dir = Channel.fromPath( params.input, type: 'dir' )
-input_gtf = file(params.gtf_filename, type="val")
-input_cage_peak = file(params.cage_peak_filename, type="val")
-input_polyA = file(params.polya_name, type="val")
-entry_json = file(params.entry_json, type="val")
-experiment_json = file(params.experiment_json, type="val")
-genome_reference = file(params.ref_genome_filename, type="val")
-transcriptome_reference = file(params.ref_transcriptome_filename, type="val")
-coverage_file = file(params.sj_filename, type="val")
-input_read_model_map = file(params.read_model_map_filename, type="val")
+input_gtf = params.gtf_filename
+input_cage_peak = params.cage_peak_filename
+input_polyA = params.polya_name
+entry_json = params.entry_json
+experiment_json = params.experiment_json
+genome_reference = params.ref_genome_filename
+transcriptome_reference = params.ref_transcriptome_filename
+coverage_file = params.sj_filename
+input_read_model_map = params.read_model_map_filename
 ref_dir = Channel.fromPath( params.public_ref_dir, type: 'dir' )
 tool_name = params.participant_id.replaceAll("\\s","_")
 gold_standards_dir = Channel.fromPath(params.goldstandard_dir, type: 'dir' )
