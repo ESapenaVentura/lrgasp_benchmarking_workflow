@@ -161,7 +161,6 @@ file genome_reference
 file transcriptome_reference
 file coverage_file
 file input_read_model_map
-val cancer_types
 path gold_standards_dir
 val tool_name
 val community_id
