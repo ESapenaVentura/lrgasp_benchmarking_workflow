@@ -134,64 +134,74 @@ process validation {
 
 	output:
 	val task.exitStatus into EXIT_STAT
-	file 'validation.json' into validation_out
+	file '/app/output/validation/participant.json' into validation_out
 
 	
 	"""
-	python /app/validation.py -i $input_dir -c $input_cage_peak -p $input_polyA -e $entry_json -x $experiment_json -g $input_gtf -r $input_read_model_map -o validation.json
+	python /app/validation.py -i $input_dir -c $input_cage_peak -p $input_polyA -e $entry_json -x $experiment_json -g $input_gtf -r $input_read_model_map -o validation
 	"""
 
 }
 
 process compute_metrics {
 
-	tag "Computing benchmark metrics for submitted data"
-	
-	publishDir "${assessment_file.parent}", saveAs: { filename -> assessment_file.name }, mode: 'copy'
+tag "Computing benchmark metrics for submitted data"
 
-	input:
-	val file_validated from EXIT_STAT
-	file input_file
-	val cancer_types
-	path gold_standards_dir
-	val tool_name
-	val community_id
+publishDir "${assessment_file.parent}", saveAs: { filename -> assessment_file.name }, mode: 'copy'
 
-	output:
-	file 'assessment.json' into assessment_out
+input:
+val file_validated from EXIT_STAT
+path input_dir
+file input_gtf
+file input_cage_peak
+file input_polyA
+file entry_json
+file experiment_json
+file genome_reference
+file transcriptome_reference
+file coverage_file
+file input_read_model_map
+val cancer_types
+path gold_standards_dir
+val tool_name
+val community_id
 
-	when:
-	file_validated == 0
+output:
+file '/app/output/assessment/assessment.json' into assessment_out
 
-	// TODO fix this command
-	"""
-	conda run -n sqanti_env python /app/sqanti3_lrgasp.challenge1.py "$input_dir"/models.gtf "$input_dir"/lrgasp_gencode_vM27_sirvs.gtf "$input_dir"/lrgasp_grcm39_sirvs.fasta --gtf --experiment_json input/experiment.json --entry_json input/entry.json --cage_peak input/cage_peak_mouse.bed --polyA_motif_list input/polyA_list.txt -c input/SJ.out.tab -d results/ -o test
-	"""
+when:
+file_validated == 0
+
+// TODO fix this command
+"""
+conda run -n sqanti_env python /app/sqanti3_lrgasp.challenge1.py $input_dir/$input_gtf $input_dir/$transcriptome_reference $input_dir/$genome_reference --gtf --experiment_json $input_dir/$experiment_json --entry_json $input_dir/$entry_json --cage_peak $input_dir/$input_cage_peak --polyA_motif_list $input_dir/$input_polyA \
+-c $input_dir/$coverage_file -d $other_dir/results/ -o assessment
+"""
 
 }
 
 process benchmark_consolidation {
 
-	tag "Performing benchmark assessment and building plots"
-	publishDir "${aggregation_dir.parent}", pattern: "aggregation_dir", saveAs: { filename -> aggregation_dir.name }, mode: 'copy'
-	publishDir "${data_model_export_dir.parent}", pattern: "data_model_export.json", saveAs: { filename -> data_model_export_dir.name }, mode: 'copy'
-	publishDir "${augmented_benchmark_data.parent}", pattern: "augmented_benchmark_data", saveAs: { filename -> augmented_benchmark_data.name }, mode: 'copy'
+tag "Performing benchmark assessment and building plots"
+publishDir "${aggregation_dir.parent}", pattern: "aggregation_dir", saveAs: { filename -> aggregation_dir.name }, mode: 'copy'
+publishDir "${data_model_export_dir.parent}", pattern: "data_model_export.json", saveAs: { filename -> data_model_export_dir.name }, mode: 'copy'
+publishDir "${augmented_benchmark_data.parent}", pattern: "augmented_benchmark_data", saveAs: { filename -> augmented_benchmark_data.name }, mode: 'copy'
 
-	input:
-	path benchmark_data
-	file assessment_out
-	file validation_out
-	
-	output:
-	path 'aggregation_dir', type: 'dir'
-	path 'augmented_benchmark_data', type: 'dir'
-	path 'data_model_export.json'
+input:
+path benchmark_data
+file assessment_out
+file validation_out
 
-	"""
-	cp -Lpr $benchmark_data augmented_benchmark_data
-	python /app/manage_assessment_data.py -b augmented_benchmark_data -p $assessment_out -o aggregation_dir
-	python /app/merge_data_model_files.py -p $validation_out -m $assessment_out -a aggregation_dir -o data_model_export.json
-	"""
+output:
+path 'aggregation_dir', type: 'dir'
+path 'augmented_benchmark_data', type: 'dir'
+path 'data_model_export.json'
+
+"""
+cp -Lpr $benchmark_data augmented_benchmark_data
+python /app/manage_assessment_data.py -b augmented_benchmark_data -p $assessment_out -o aggregation_dir
+python /app/merge_data_model_files.py -p $validation_out -m $assessment_out -a aggregation_dir -o data_model_export.json
+"""
 
 }
 

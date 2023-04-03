@@ -2,7 +2,7 @@
   {
     "user_id": "OpEBUSER5cc02033c429d",
     "data_type": "participant",
-    "file_type": "GZIP",
+    "file_type": "TAR",
     "creation_time": {
       "usec": 0,
       "sec": 1559897133
@@ -28,7 +28,7 @@
     "compressed": 0,
     "taxon_id": -1,
     "_id": "OpEBUSER5cc02033c429d_5cfa242b7b85c0.96805689",
-    "file_path": "tests/LRGASP/lrgasp_data/input_data/rna.fasta"
+    "file_path": "tests/LRGASP/lrgasp_dataset/"
   },
   {
     "user_id": "public",
