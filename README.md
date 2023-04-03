@@ -3,7 +3,7 @@
 
 # Data from original lrgasp
 
-- All challenges (categories) of data that only had 1 participant (e.g. `3_polya_supported_r2c2_ont_ls`) have been deleted. No use having categories with only 1 participant
+- All challenges (categories) of data that only had 1 participant (e.g. `3_polya_supported_r2c2_ont_ls`) have been deleted.
 
 # Categories
 
@@ -57,10 +57,3 @@ Since the sequence of the SIRVs is known, these can be used as reference metrics
 |Non redundant precision|Sensitivity|Precision|
 
 For more information on what each of these mean, please visit the [LRGASP Guidelines and tool](https://lrgasp.github.io/lrgasp-submissions/docs/) page
-
-
-# TODOS
-- main.nf
-- nextflow.config
-- in_metadata.json?
-- config.json: update when push repo
