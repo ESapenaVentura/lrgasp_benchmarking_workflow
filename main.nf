@@ -135,11 +135,11 @@ process validation {
 
 	output:
 	val task.exitStatus into EXIT_STAT
-	file '/app/output/validation/participant.json' into validation_out
+	file 'participant.json' into validation_out
 
 	
 	"""
-	python /app/validation.py -i $input_dir -c $input_cage_peak -p $input_polyA -e $entry_json -x $experiment_json -g $input_gtf -r $input_read_model_map -o validation
+	python /app/validation.py -i $input_dir -c $input_cage_peak -p $input_polyA -e $entry_json -x $experiment_json -g $input_gtf -r $input_read_model_map -o participant.json
 	"""
 
 }
