@@ -1,0 +1,38 @@
+{
+    "_id": "placeholder_id", 
+    "challenge_ids": [
+        "iso_detect_ref_WTC11_captrap_pacbio_lo"
+    ], 
+    "datalink": {
+        "inline_data": {
+            "challenge_participants": [
+                {
+                    "metric_y": 65.93, 
+                    "metric_x": 87.05
+                }, 
+                {
+                    "metric_y": 99.07, 
+                    "metric_x": 58.98
+                }, 
+                {
+                    "metric_y": 61.2, 
+                    "metric_x": 86.62
+                }, 
+                {
+                    "metric_y": 98.9, 
+                    "metric_x": 63.61
+                }, 
+                {
+                    "metric_y": 47.49, 
+                    "metric_x": 74.79
+                }
+            ], 
+            "visualization": {
+                "type": "2D-plot", 
+                "y_axis": "3_reference_supported_(transcript)_FSM_%", 
+                "x_axis": "3_quantseq_supported_FSM_%"
+            }
+        }
+    }, 
+    "type": "aggregation"
+}

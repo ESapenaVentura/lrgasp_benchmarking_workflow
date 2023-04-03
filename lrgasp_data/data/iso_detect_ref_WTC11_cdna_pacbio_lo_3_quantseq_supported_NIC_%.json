@@ -1,0 +1,53 @@
+{
+    "_id": "placeholder_id", 
+    "challenge_ids": [
+        "iso_detect_ref_WTC11_cdna_pacbio_lo"
+    ], 
+    "datalink": {
+        "inline_data": {
+            "challenge_participants": [
+                {
+                    "metric_y": 89.34, 
+                    "participant_id": "lyric"
+                }, 
+                {
+                    "metric_y": 78.38, 
+                    "participant_id": "isotools"
+                }, 
+                {
+                    "metric_y": 86.98, 
+                    "participant_id": "mandalorion"
+                }, 
+                {
+                    "metric_y": 76.53, 
+                    "participant_id": "ib"
+                }, 
+                {
+                    "metric_y": 85.81, 
+                    "participant_id": "isoquant"
+                }, 
+                {
+                    "metric_y": 85.13, 
+                    "participant_id": "spectra"
+                }, 
+                {
+                    "metric_y": 82.45, 
+                    "participant_id": "bambu"
+                }, 
+                {
+                    "metric_y": 89.29, 
+                    "participant_id": "talon_lapa"
+                }, 
+                {
+                    "metric_y": 88.23, 
+                    "participant_id": "flair"
+                }
+            ], 
+            "visualization": {
+                "type": "bar-plot", 
+                "y_axis": "3_quantseq_supported_NIC_%"
+            }
+        }
+    }, 
+    "type": "aggregation"
+}

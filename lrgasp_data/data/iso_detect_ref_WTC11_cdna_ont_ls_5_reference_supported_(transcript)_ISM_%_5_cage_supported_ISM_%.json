@@ -1,0 +1,26 @@
+{
+    "_id": "placeholder_id", 
+    "challenge_ids": [
+        "iso_detect_ref_WTC11_cdna_ont_ls"
+    ], 
+    "datalink": {
+        "inline_data": {
+            "challenge_participants": [
+                {
+                    "metric_y": 17.33, 
+                    "metric_x": 33.96
+                }, 
+                {
+                    "metric_y": 13.83, 
+                    "metric_x": 23.02
+                }
+            ], 
+            "visualization": {
+                "type": "2D-plot", 
+                "y_axis": "5_reference_supported_(transcript)_ISM_%", 
+                "x_axis": "5_cage_supported_ISM_%"
+            }
+        }
+    }, 
+    "type": "aggregation"
+}

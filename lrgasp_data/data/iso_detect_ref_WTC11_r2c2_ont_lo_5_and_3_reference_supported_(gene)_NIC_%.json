@@ -1,0 +1,37 @@
+{
+    "_id": "placeholder_id", 
+    "challenge_ids": [
+        "iso_detect_ref_WTC11_r2c2_ont_lo"
+    ], 
+    "datalink": {
+        "inline_data": {
+            "challenge_participants": [
+                {
+                    "metric_y": 83.06, 
+                    "participant_id": "lyric"
+                }, 
+                {
+                    "metric_y": 74.47, 
+                    "participant_id": "mandalorion"
+                }, 
+                {
+                    "metric_y": 63.0, 
+                    "participant_id": "isoquant"
+                }, 
+                {
+                    "metric_y": 80.69, 
+                    "participant_id": "talon_lapa"
+                }, 
+                {
+                    "metric_y": 71.39, 
+                    "participant_id": "bambu"
+                }
+            ], 
+            "visualization": {
+                "type": "bar-plot", 
+                "y_axis": "5_and_3_reference_supported_(gene)_NIC_%"
+            }
+        }
+    }, 
+    "type": "aggregation"
+}

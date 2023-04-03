@@ -1,0 +1,224 @@
+{
+  "input_files": [
+    {
+      "name": "input",
+      "value": "OpEBUSER5cc02033c429d_5cfa242b7b85c0.96805689",
+      "required": true,
+      "allow_multiple": false
+    },
+    {
+      "name": "goldstandard_dir",
+      "value": "OpEBUSER5cc02033c429d_5d0357aad8b012.32264679_dummy",
+      "required": true,
+      "allow_multiple": false
+    },
+    {
+      "name": "assess_dir",
+      "value": "OpEBUSER5cc02033c429d_5d0357aad8b974.28339324_dummy",
+      "required": true,
+      "allow_multiple": false
+    },
+    {
+      "name": "public_ref_dir",
+      "value": "OpEBUSER5cc02033c429d_5d0357aad8c180.12103256_dummy",
+      "required": true,
+      "allow_multiple": false
+    }
+  ],
+  "arguments": [
+    {
+      "name": "execution",
+      "value": "LRGASP-test"
+    },
+    {
+      "name": "project",
+      "value": "LRGASP-test"
+    },
+    {
+      "name": "description",
+      "value": "Test run"
+    },
+    {
+      "name": "nextflow_repo_uri",
+      "value": "https://github.com/TianYuan-Liu/lrgasp-challenge-3_benchmarking_workflow.git"
+    },
+    {
+      "name": "nextflow_repo_tag",
+      "value": "4dae523763b8ff599fefbdb7e49c50f6b59b0c7c"
+    },
+    {
+      "name": "community_id",
+      "value": "OEBC010"
+    },
+    {
+      "name": "challenges_ids",
+      "value": "iso_detect_ref_ES_cdna_pacbio_ls"
+    },
+    {
+      "name": "participant_id",
+      "value": "klaak"
+    },
+    {
+      "name": "gtf_filename",
+      "value": "models.gtf"
+    },
+    {
+      "name": "sj_filename",
+      "value": "SJ.out.tab"
+    },
+    {
+      "name": "entry_json",
+      "value": "entry.json"
+    },
+    {
+      "name": "experiment_json",
+      "value": "experiment.json"
+    },
+    {
+      "name": "read_model_map_filename",
+      "value": "read_model_map.tsv"
+    },
+    {
+      "name": "cage_peak_filename",
+      "value": "mouse.refTSS_v3.1.mm39.bed"
+    },
+    {
+      "name": "polya_name",
+      "value": "polyA_list.txt"
+    },
+    {
+      "name": "ref_genome_filename",
+      "value": "lrgasp_grcm39_sirvs.fasta"
+    },
+    {
+      "name": "ref_transcriptome_filename",
+      "value": "lrgasp_gencode_vM28_sirvs.mouse.gtf"
+    }
+  ],
+  "output_files": [
+    {
+      "name": "validation_result",
+      "required": true,
+      "allow_multiple": false,
+      "file": {
+        "file_type": "JSON",
+        "data_type": "validated_participant",
+        "file_path": "LRGASP-test/validated-participant-data.json",
+        "compressed": "null",
+        "meta_data": {
+          "description": "Benchmarking data model minimal participant dataset",
+          "tool": "TCGA_CD",
+          "visible": true
+        }
+      }
+    },
+    {
+      "name": "assessment_results",
+      "required": true,
+      "allow_multiple": false,
+      "file": {
+        "file_type": "JSON",
+        "file_path": "LRGASP-test/Assessment_datasets.json",
+        "data_type": "assessment",
+        "compressed": "null",
+        "meta_data": {
+          "description": "Metrics derivated from the given input data",
+          "tool": "klaak",
+          "visible": true
+        }
+      }
+    },
+    {
+      "name": "data_model_export_dir",
+      "required": true,
+      "allow_multiple": false,
+      "file": {
+        "file_type": "JSON",
+        "file_path": "LRGASP-test/consolidated_results.json",
+        "data_type": "consolidated_benchmark_dataset",
+        "compressed": "null",
+        "meta_data": {
+          "description": "Aggregation of minimal datasets ready to be used by the OEB pushing tool",
+          "tool": "klaak",
+          "visible": true
+        }
+      }
+    },
+    {
+      "name": "augmented_assess_dir",
+      "required": true,
+      "allow_multiple": false,
+      "file": {
+        "file_type": "JSON",
+        "file_path": "LRGASP-test/augmented_data",
+        "data_type": "consolidated_benchmark_dataset",
+        "compressed": "null",
+        "meta_data": {
+          "description": "Aggregation of minimal datasets ready to be used by the OEB pushing tool",
+          "tool": "klaak",
+          "visible": true
+        }
+      }
+    },
+    {
+      "name": "tar_view",
+      "required": true,
+      "allow_multiple": false,
+      "custom_visualizer": true,
+      "file": {
+        "file_type": "TAR",
+        "data_type": "tool_statistics",
+        "compressed": "gzip",
+        "meta_data": {
+          "description": "Data for metrics visualizer",
+          "tool": "TCGA_CD",
+          "visible": false
+        }
+      }
+    },
+    {
+      "name": "tar_nf_stats",
+      "required": false,
+      "allow_multiple": false,
+      "file": {
+        "file_type": "TAR",
+        "data_type": "configuration_file",
+        "compressed": "gzip",
+        "meta_data": {
+          "description": "Execution monitoring and logging data",
+          "tool": "TCGA_CD",
+          "visible": true
+        }
+      }
+    },
+    {
+      "name": "tar_other",
+      "required": false,
+      "allow_multiple": false,
+      "file": {
+        "file_type": "TAR",
+        "data_type": "configuration_file",
+        "compressed": "gzip",
+        "meta_data": {
+          "description": "Other execution associated data",
+          "tool": "TCGA_CD",
+          "visible": true
+        }
+      }
+    },
+    {
+      "name": "report_images",
+      "required": false,
+      "allow_multiple": true,
+      "file": {
+        "file_type": "IMG",
+        "data_type": "report_image",
+        "meta_data": {
+          "description": "Execution monitoring and logging images",
+          "tool": "TCGA_CD",
+          "visible": true
+        }
+      }
+    }
+  ]
+}

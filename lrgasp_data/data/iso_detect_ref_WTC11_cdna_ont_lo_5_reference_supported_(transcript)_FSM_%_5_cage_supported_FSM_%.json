@@ -1,0 +1,42 @@
+{
+    "_id": "placeholder_id", 
+    "challenge_ids": [
+        "iso_detect_ref_WTC11_cdna_ont_lo"
+    ], 
+    "datalink": {
+        "inline_data": {
+            "challenge_participants": [
+                {
+                    "metric_y": 76.64, 
+                    "metric_x": 75.48
+                }, 
+                {
+                    "metric_y": 89.35, 
+                    "metric_x": 79.6
+                }, 
+                {
+                    "metric_y": 99.28, 
+                    "metric_x": 57.9
+                }, 
+                {
+                    "metric_y": 98.97, 
+                    "metric_x": 68.91
+                }, 
+                {
+                    "metric_y": 57.21, 
+                    "metric_x": 67.91
+                }, 
+                {
+                    "metric_y": 90.72, 
+                    "metric_x": 68.31
+                }
+            ], 
+            "visualization": {
+                "type": "2D-plot", 
+                "y_axis": "5_reference_supported_(transcript)_FSM_%", 
+                "x_axis": "5_cage_supported_FSM_%"
+            }
+        }
+    }, 
+    "type": "aggregation"
+}

@@ -1,0 +1,26 @@
+{
+    "_id": "placeholder_id", 
+    "challenge_ids": [
+        "iso_detect_ref_WTC11_cdna_pacbio_ls"
+    ], 
+    "datalink": {
+        "inline_data": {
+            "challenge_participants": [
+                {
+                    "metric_y": 23.76, 
+                    "metric_x": 51.11
+                }, 
+                {
+                    "metric_y": 6.93, 
+                    "metric_x": 21.2
+                }
+            ], 
+            "visualization": {
+                "type": "2D-plot", 
+                "y_axis": "5_reference_supported_(transcript)_ISM_%", 
+                "x_axis": "5_cage_supported_ISM_%"
+            }
+        }
+    }, 
+    "type": "aggregation"
+}

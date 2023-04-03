@@ -1,0 +1,42 @@
+{
+    "_id": "placeholder_id", 
+    "challenge_ids": [
+        "iso_detect_ref_WTC11_drna_ont_lo"
+    ], 
+    "datalink": {
+        "inline_data": {
+            "challenge_participants": [
+                {
+                    "metric_y": 85.18, 
+                    "metric_x": 83.64
+                }, 
+                {
+                    "metric_y": 67.48, 
+                    "metric_x": 92.66
+                }, 
+                {
+                    "metric_y": 69.88, 
+                    "metric_x": 91.52
+                }, 
+                {
+                    "metric_y": 99.3, 
+                    "metric_x": 72.38
+                }, 
+                {
+                    "metric_y": 54.0, 
+                    "metric_x": 78.74
+                }, 
+                {
+                    "metric_y": 99.31, 
+                    "metric_x": 66.6
+                }
+            ], 
+            "visualization": {
+                "type": "2D-plot", 
+                "y_axis": "3_reference_supported_(transcript)_FSM_%", 
+                "x_axis": "3_quantseq_supported_FSM_%"
+            }
+        }
+    }, 
+    "type": "aggregation"
+}
