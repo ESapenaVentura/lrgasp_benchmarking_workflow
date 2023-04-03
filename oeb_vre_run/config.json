@@ -40,11 +40,11 @@
     },
     {
       "name": "nextflow_repo_uri",
-      "value": "https://github.com/TianYuan-Liu/lrgasp-challenge-3_benchmarking_workflow.git"
+      "value": "https://github.com/ESapenaVentura/lrgasp_benchmarking_workflow.git"
     },
     {
       "name": "nextflow_repo_tag",
-      "value": "4dae523763b8ff599fefbdb7e49c50f6b59b0c7c"
+      "value": "25f5abc838725852b65f1b5d37907465503a0c07"
     },
     {
       "name": "community_id",
