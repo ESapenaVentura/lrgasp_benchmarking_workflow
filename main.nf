@@ -77,6 +77,7 @@ if (params.help) {
 // input files
 
 input_dir = Channel.fromPath( params.input, type: 'dir' )
+input_dir_metrics = Channel.fromPath( params.input, type: 'dir' )
 input_gtf = params.gtf_filename
 input_cage_peak = params.cage_peak_filename
 input_polyA = params.polya_name
@@ -151,7 +152,7 @@ publishDir "${assessment_file.parent}", saveAs: { filename -> assessment_file.na
 
 input:
 val file_validated from EXIT_STAT
-path input_dir
+path input_dir_metrics
 file input_gtf
 file input_cage_peak
 file input_polyA
