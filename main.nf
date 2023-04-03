@@ -139,7 +139,7 @@ process validation {
 
 	
 	"""
-	python /app/validation.py -i $input_dir -c $input_cage_peak -p $input_polyA -e $entry_json -x $experiment_json -g $input_gtf -r $input_read_model_map -o participant.json
+	python /app/validation.py -i $input_dir -e $entry_json -x $experiment_json -g $input_gtf -r $input_read_model_map -o participant.json
 	"""
 
 }
