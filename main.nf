@@ -119,16 +119,16 @@ process validation {
 
 	input:
 	path input_dir
-	path input_gtf
-	path input_cage_peak
-	path input_polyA
-	path entry_json
-	path experiment_json
-	path genome_reference
-	path transcriptome_reference
-	path coverage_file
-	path input_read_model_map
-	path ref_dir
+	val input_gtf
+	val input_cage_peak
+	val input_polyA
+	val entry_json
+	val experiment_json
+	val genome_reference
+	val transcriptome_reference
+	val coverage_file
+	val input_read_model_map
+	val ref_dir
 	val challenges_ids
 	val tool_name
 	val community_id
