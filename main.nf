@@ -60,7 +60,7 @@ if (params.help) {
          public reference directory : ${params.public_ref_dir}
          tool name : ${params.participant_id}
          metrics reference datasets: ${params.goldstandard_dir}
-         selected cancer types: ${params.challenges_ids}
+         selected challenges: ${params.challenges_ids}
          benchmark data: ${params.assess_dir}
          augmented benchmark data: ${params.augmented_assess_dir}
          validation results directory: ${params.validation_result}
@@ -117,7 +117,7 @@ process validation {
 	publishDir "${validation_file.parent}", saveAs: { filename -> validation_file.name }, mode: 'copy'
 
 	input:
-	dir input_dir
+	path input_dir
 	file input_gtf
 	file input_cage_peak
 	file input_polyA
