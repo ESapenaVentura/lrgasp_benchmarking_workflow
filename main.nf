@@ -77,6 +77,15 @@ if (params.help) {
 // input files
 
 input_dir = Channel.fromPath( params.input, type: 'dir' )
+input_gtf = file(params.gtf_filename, type="val")
+input_cage_peak = file(params.cage_peak_filename, type="val")
+input_polyA = file(params.polya_name, type="val")
+entry_json = file(params.entry_json, type="val")
+experiment_json = file(params.experiment_json, type="val")
+genome_reference = file(params.ref_genome_filename, type="val")
+transcriptome_reference = file(params.ref_transcriptome_filename, type="val")
+coverage_file = file(params.sj_filename, type="val")
+input_read_model_map = file(params.read_model_map_filename, type="val")
 ref_dir = Channel.fromPath( params.public_ref_dir, type: 'dir' )
 tool_name = params.participant_id.replaceAll("\\s","_")
 gold_standards_dir = Channel.fromPath(params.goldstandard_dir, type: 'dir' )
@@ -108,7 +117,16 @@ process validation {
 	publishDir "${validation_file.parent}", saveAs: { filename -> validation_file.name }, mode: 'copy'
 
 	input:
-	file input_file
+	dir input_dir
+	file input_gtf
+	file input_cage_peak
+	file input_polyA
+	file entry_json
+	file experiment_json
+	file genome_reference
+	file transcriptome_reference
+	file coverage_file
+	file input_read_model_map
 	path ref_dir
 	val challenges_ids
 	val tool_name
@@ -120,7 +138,7 @@ process validation {
 
 	
 	"""
-	python /app/validation.py -c input/cage_peak_mouse.bed -p input/polyA_list.txt -e input/entry.json -x input/experiment.json -o validation.json
+	python /app/validation.py -i $input_dir -c $input_cage_peak -p $input_polyA -e $entry_json -x $experiment_json -g $input_gtf -r $input_read_model_map -o validation.json
 	"""
 
 }
