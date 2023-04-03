@@ -119,15 +119,15 @@ process validation {
 
 	input:
 	path input_dir
-	file input_gtf
-	file input_cage_peak
-	file input_polyA
-	file entry_json
-	file experiment_json
-	file genome_reference
-	file transcriptome_reference
-	file coverage_file
-	file input_read_model_map
+	path input_gtf
+	path input_cage_peak
+	path input_polyA
+	path entry_json
+	path experiment_json
+	path genome_reference
+	path transcriptome_reference
+	path coverage_file
+	path input_read_model_map
 	path ref_dir
 	val challenges_ids
 	val tool_name
@@ -139,7 +139,7 @@ process validation {
 
 	
 	"""
-	python /app/validation.py -i $input_dir -e $entry_json -x $experiment_json -g $input_gtf -r $input_read_model_map -o participant.json
+	python /app/validation.py -i "$input_dir" -e "$entry_json" -x "$experiment_json" -g "$input_gtf" -r "$input_read_model_map" -o participant.json
 	"""
 
 }
