@@ -14,11 +14,11 @@ if (params.help) {
 
 	    Run with user parameters:
 
- 	    nextflow run main.nf -profile docker --input {driver.genes.file} --public_ref_dir {validation.reference.file} --participant_id {tool.name} --goldstandard_dir {gold.standards.dir} --cancer_types {analyzed.cancer.types} --assess_dir {benchmark.data.dir} --augmented_assess_dir {benchmark.augmented_data.dir} --results_dir {output.dir}
+ 	    nextflow run main.nf -profile docker --input {input.tar.gz.file} --public_ref_dir {validation.reference.file} --participant_id {tool.name} --goldstandard_dir {gold.standards.dir} --cancer_types {analyzed.cancer.types} --assess_dir {benchmark.data.dir} --augmented_assess_dir {benchmark.augmented_data.dir} --results_dir {output.dir}
 
 		For more informations on the parameters, please see the README.md file located in the dockers repository 'example_data' folder.
 	    Mandatory arguments:
-                --input                 Directory where the input files can be found
+                --input                 tar.gz file containing the input files needed for the pipeline
                 --community_id          Name or OEB permanent ID for the benchmarking community
                 --public_ref_dir        Directory with public reference genome and annotation files
                 --participant_id        Name of the tool used for benchmarking
@@ -55,7 +55,7 @@ if (params.help) {
          ==============================================
            LRGASP CHALLENGE 1 - ISOFORM QUANTIFICATION
          ==============================================
-         input directory: ${params.input}
+         input file: ${params.input}
          benchmarking community = ${params.community_id}
          public reference directory : ${params.public_ref_dir}
          tool name : ${params.participant_id}
@@ -76,7 +76,7 @@ if (params.help) {
 
 // input files
 
-input_dir = Channel.fromPath( params.input, type: 'dir' )
+input_dir = file(params.input)
 input_dir_metrics = Channel.fromPath( params.input, type: 'dir' )
 input_gtf = params.gtf_filename
 input_cage_peak = params.cage_peak_filename
