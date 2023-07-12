@@ -49,14 +49,8 @@ echo
 echo "Fetching reference dataset for ${DATA_RELEASE}"
 
 # Clone docker repository - Example data was deposited there
-git clone https://github.com/ESapenaVentura/lrgasp_docker.git
-mv lrgasp_docker/example_data/iso_detect_ref_input_example "$inputsdir"
-# Delete repository
-rm -r lrgasp_docker
+wget https://github.com/ESapenaVentura/lrgasp_docker/raw/main/example_data/iso_detect_ref_input_example/input_user_files.tar.gz && mv input_user_files.tar.gz "$inputsdir"/input_user_files.tar.gz
 
-# Decompress files
-gunzip -d "$inputsdir"/models.gtf.gz
-gunzip -d "$inputsdir"/read_model_map.tsv.gz
 
 # Download reference genome and transcriptome
 wget https://lrgasp.s3.amazonaws.com/lrgasp_grcm39_sirvs.fasta && mv lrgasp_grcm39_sirvs.fasta "$inputsdir"/lrgasp_grcm39_sirvs.fasta

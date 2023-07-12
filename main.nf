@@ -23,20 +23,8 @@ if (params.help) {
                 --public_ref_dir        Directory with public reference genome and annotation files
                 --participant_id        Name of the tool used for benchmarking
                 --goldstandard_dir      Dir that contains metrics reference data for SIRVs
-                --challenges_ids        List of challenges (iso_detect_ref_<sample>_<library_prep>_<sequencing_platform>_<read_length_used>) which are included in the benchmark. For a full list available, please see README.md
+                --challenges_ids        List of challenges (<library_prep>_<sequencing_platform>_<read_length_used>_<splice_type>) which are included in the benchmark. For a full list available, please see README.md
                 --assess_dir            Dir where the input data for the benchmark are stored
-
-	    Other options:
-				--gtf_filename			Name of the GTF file with model annotations.
-				--sj_filename			Name of the Splice Junction file created by STAR.
-				--entry_json			Name of the entry.json file. If not provided, defaults to 'entry.json'
-				--experiment_json		Name of the experiment.json file. If not provided, defaults to 'experiment.json'
-				--read_model_map_filename	Name of the read to transcript model map file.
-				--cage_peak_filename	Name of the CAGE-peak file.
-				--polya_name			Name of the polyA motif list
-				--ref_genome_filename	Name of the reference genome, with SIRV data
-				--ref_transcriptome_filename	Name of the reference transcriptome, with SIRV data
-
                 --validation_result     The output directory where the results from validation step will be saved
                 --augmented_assess_dir  Dir where the augmented data for the benchmark are stored
                 --assessment_results    The output directory where the results from the computed metrics step will be saved
@@ -55,7 +43,7 @@ if (params.help) {
          ==============================================
            LRGASP CHALLENGE 1 - ISOFORM QUANTIFICATION
          ==============================================
-         input file: ${params.input}
+         input tar.gz file: ${params.input}
          benchmarking community = ${params.community_id}
          public reference directory : ${params.public_ref_dir}
          tool name : ${params.participant_id}
@@ -76,17 +64,8 @@ if (params.help) {
 
 // input files
 
-input_dir = file(params.input)
+input_gz_file = file(params.input)
 input_dir_metrics = Channel.fromPath( params.input, type: 'dir' )
-input_gtf = params.gtf_filename
-input_cage_peak = params.cage_peak_filename
-input_polyA = params.polya_name
-entry_json = params.entry_json
-experiment_json = params.experiment_json
-genome_reference = params.ref_genome_filename
-transcriptome_reference = params.ref_transcriptome_filename
-coverage_file = params.sj_filename
-input_read_model_map = params.read_model_map_filename
 ref_dir = Channel.fromPath( params.public_ref_dir, type: 'dir' )
 tool_name = params.participant_id.replaceAll("\\s","_")
 gold_standards_dir = Channel.fromPath(params.goldstandard_dir, type: 'dir' )
@@ -118,17 +97,7 @@ process validation {
 	publishDir "${validation_file.parent}", saveAs: { filename -> validation_file.name }, mode: 'copy'
 
 	input:
-	path input_dir
-	val input_gtf
-	val input_cage_peak
-	val input_polyA
-	val entry_json
-	val experiment_json
-	val genome_reference
-	val transcriptome_reference
-	val coverage_file
-	val input_read_model_map
-	val ref_dir
+	val input_gz_file
 	val challenges_ids
 	val tool_name
 	val community_id
@@ -139,7 +108,7 @@ process validation {
 
 	
 	"""
-	python /app/validation.py -i "$input_dir" -e "$entry_json" -x "$experiment_json" -g "$input_gtf" -r "$input_read_model_map" -o participant.json
+	python /app/validation.py -i "$input_gz_file" -o participant.json -m --challenges "$challenges_ids"
 	"""
 
 }
@@ -153,18 +122,12 @@ publishDir "${assessment_file.parent}", saveAs: { filename -> assessment_file.na
 input:
 val file_validated from EXIT_STAT
 path input_dir_metrics
-val input_gtf
-val input_cage_peak
-val input_polyA
-val entry_json
-val experiment_json
-val genome_reference
-val transcriptome_reference
-val coverage_file
-val input_read_model_map
+path public_ref_dir
+path other_dir
 path gold_standards_dir
 val tool_name
 val community_id
+val challenges_ids
 
 output:
 file 'assessment.json' into assessment_out
@@ -173,8 +136,7 @@ when:
 file_validated == 0
 
 """
-conda run -n sqanti_env python /app/sqanti3_lrgasp.challenge1.py $input_dir_metrics/$input_gtf $input_dir_metrics/$transcriptome_reference $input_dir_metrics/$genome_reference --gtf --experiment_json $input_dir_metrics/$experiment_json --entry_json $input_dir_metrics/$entry_json --cage_peak $input_dir_metrics/$input_cage_peak --polyA_motif_list $input_dir_metrics/$input_polyA \
--c $input_dir_metrics/$coverage_file -d "$input_dir_metrics" -o results --assesment-output "assessment.json"
+conda run -n sqanti_env python /app/sqanti3_lrgasp.challenge1.py --input-gz-file "$input_gz_file" --manifest --gtf -d "$other_dir" --ref-directory "$public_ref_dir" -o "$other_dir" --assesment-output "assessment.json" --challenges "$challenges_ids"
 """
 
 }
@@ -198,7 +160,7 @@ path 'data_model_export.json'
 
 """
 cp -Lpr $benchmark_data augmented_benchmark_data
-python /app/manage_assessment_data.py -b augmented_benchmark_data -p $assessment_out -o aggregation_dir
+python /app/manage_assessment_data.py -b "$benchmark_data" -p $assessment_out -o aggregation_dir
 python /app/merge_data_model_files.py -p $validation_out -m $assessment_out -a aggregation_dir -o data_model_export.json
 """
 
