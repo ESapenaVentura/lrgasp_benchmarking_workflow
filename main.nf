@@ -122,7 +122,7 @@ publishDir "${assessment_file.parent}", saveAs: { filename -> assessment_file.na
 input:
 val file_validated from EXIT_STAT
 path input_dir_metrics
-path public_ref_dir
+path ref_dir
 path other_dir
 path gold_standards_dir
 val tool_name
@@ -136,7 +136,7 @@ when:
 file_validated == 0
 
 """
-conda run -n sqanti_env python /app/sqanti3_lrgasp.challenge1.py --input-gz-file "$input_gz_file" --manifest --gtf -d "$other_dir" --ref-directory "$public_ref_dir" -o "$other_dir" --assesment-output "assessment.json" --challenges "$challenges_ids"
+conda run -n sqanti_env python /app/sqanti3_lrgasp.challenge1.py --input-gz-file "$input_gz_file" --manifest --gtf -d "$other_dir" --ref-directory "$ref_dir" -o "$other_dir" --assesment-output "assessment.json" --challenges "$challenges_ids"
 """
 
 }
