@@ -108,7 +108,10 @@ process validation {
 
 	
 	"""
-	tar -xvf "$input_gz_file"
+	println "TAR ${input_gz_file}"
+	tar -xvf $input_gz_file
+	println "TAR ${input_gz_file.getName()} "
+	tar -xvf ${input_gz_file.getName()}
 	python /app/validation.py -i "$input_gz_file" -o participant.json -m --challenges "$challenges_ids"
 	"""
 
