@@ -97,7 +97,7 @@ process validation {
 	publishDir "${validation_file.parent}", saveAs: { filename -> validation_file.name }, mode: 'copy'
 
 	input:
-	val input_gz_file
+	file input_gz_file
 	val challenges_ids
 	val tool_name
 	val community_id
