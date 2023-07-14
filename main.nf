@@ -108,7 +108,6 @@ process validation {
 
 	
 	"""
-	tar -xvf $input_gz_file
 	python /app/validation.py -i $input_gz_file -o participant.json -m --challenges "$challenges_ids"
 	"""
 
@@ -123,7 +122,6 @@ publishDir "${assessment_file.parent}", saveAs: { filename -> assessment_file.na
 input:
 val file_validated from EXIT_STAT
 file input_gz_file
-path input_dir_metrics
 path ref_dir
 path other_dir
 val challenges_ids
