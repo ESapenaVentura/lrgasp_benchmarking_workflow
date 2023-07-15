@@ -158,6 +158,7 @@ path 'augmented_benchmark_data', type: 'dir'
 path 'data_model_export.json'
 
 """
+tar -xvf $input_gz_file
 cp -Lpr $benchmark_data augmented_benchmark_data
 python /app/manage_assessment_data.py -b "$benchmark_data" -p $assessment_out -o aggregation_dir -i $input_gz_file
 python /app/merge_data_model_files.py -p $validation_out -m $assessment_out -a aggregation_dir -o data_model_export.json
