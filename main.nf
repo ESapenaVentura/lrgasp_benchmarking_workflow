@@ -148,7 +148,6 @@ publishDir "${augmented_benchmark_data.parent}", pattern: "augmented_benchmark_d
 
 input:
 path benchmark_data
-path aggregation_dir
 file assessment_out
 file validation_out
 file input_gz_file
