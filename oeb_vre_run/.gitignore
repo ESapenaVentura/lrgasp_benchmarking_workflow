@@ -1,4 +1,4 @@
 input_dataset
 reference_datasets
 lrgasp_docker
-the_repo
+lrgasp_data/**

@@ -2,7 +2,7 @@
   "input_files": [
     {
       "name": "input",
-      "value": "OpEBUSER5cc02033c429d_5cfa242b7b85c0.96805689",
+      "value":"OpEBUSER5cc02033c429d_5cfa242b7b85c0.96805689",
       "required": true,
       "allow_multiple": false
     },
@@ -28,11 +28,11 @@
   "arguments": [
     {
       "name": "execution",
-      "value": "LRGASP-test"
+      "value": "lrgasp-test"
     },
     {
       "name": "project",
-      "value": "LRGASP-test"
+      "value": "lrgasp-test"
     },
     {
       "name": "description",
@@ -44,7 +44,7 @@
     },
     {
       "name": "nextflow_repo_tag",
-      "value": "67c4cf0e344148cc1464454fa088c5bf7c05aa30"
+      "value": "f365e28bc3895b808349792ff3aca4849ee8eb3e"
     },
     {
       "name": "community_id",
@@ -52,47 +52,11 @@
     },
     {
       "name": "challenges_ids",
-      "value": "iso_detect_ref_ES_cdna_pacbio_ls"
+      "value": "FSM_cDNA_PacBio_LS"
     },
     {
       "name": "participant_id",
       "value": "klaak"
-    },
-    {
-      "name": "gtf_filename",
-      "value": "models.gtf"
-    },
-    {
-      "name": "sj_filename",
-      "value": "SJ.out.tab"
-    },
-    {
-      "name": "entry_json",
-      "value": "entry.json"
-    },
-    {
-      "name": "experiment_json",
-      "value": "experiment.json"
-    },
-    {
-      "name": "read_model_map_filename",
-      "value": "read_model_map.tsv"
-    },
-    {
-      "name": "cage_peak_filename",
-      "value": "mouse.refTSS_v3.1.mm39.bed"
-    },
-    {
-      "name": "polya_name",
-      "value": "polyA_list.txt"
-    },
-    {
-      "name": "ref_genome_filename",
-      "value": "lrgasp_grcm39_sirvs.fasta"
-    },
-    {
-      "name": "ref_transcriptome_filename",
-      "value": "lrgasp_gencode_vM28_sirvs.mouse.gtf"
     }
   ],
   "output_files": [
@@ -103,7 +67,7 @@
       "file": {
         "file_type": "JSON",
         "data_type": "validated_participant",
-        "file_path": "LRGASP-test/validated-participant-data.json",
+        "file_path": "lrgasp-test/validated-participant-data.json",
         "compressed": "null",
         "meta_data": {
           "description": "Benchmarking data model minimal participant dataset",
@@ -118,7 +82,7 @@
       "allow_multiple": false,
       "file": {
         "file_type": "JSON",
-        "file_path": "LRGASP-test/Assessment_datasets.json",
+        "file_path": "lrgasp-test/Assessment_datasets.json",
         "data_type": "assessment",
         "compressed": "null",
         "meta_data": {
@@ -134,7 +98,7 @@
       "allow_multiple": false,
       "file": {
         "file_type": "JSON",
-        "file_path": "LRGASP-test/consolidated_results.json",
+        "file_path": "lrgasp-test/consolidated_results.json",
         "data_type": "consolidated_benchmark_dataset",
         "compressed": "null",
         "meta_data": {
@@ -150,7 +114,7 @@
       "allow_multiple": false,
       "file": {
         "file_type": "JSON",
-        "file_path": "LRGASP-test/augmented_data",
+        "file_path": "lrgasp-test/augmented_data",
         "data_type": "consolidated_benchmark_dataset",
         "compressed": "null",
         "meta_data": {
