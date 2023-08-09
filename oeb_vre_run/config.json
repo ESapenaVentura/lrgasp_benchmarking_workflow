@@ -52,7 +52,7 @@
     },
     {
       "name": "challenges_ids",
-      "value": "FSM_cDNA_PacBio_LS"
+      "value": "mouse_FSM_cDNA-PacBio-LS mouse_sirvs_cDNA-PacBio-LS"
     },
     {
       "name": "participant_id",
